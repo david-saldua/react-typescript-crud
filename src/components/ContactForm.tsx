@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
 const ContactForm: FC = () => {
@@ -8,7 +8,7 @@ const ContactForm: FC = () => {
     phone: '',
   });
 
-  const handleOnChange = (event) => {
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setContact((prevState) => {
       return {
@@ -18,70 +18,61 @@ const ContactForm: FC = () => {
     });
   };
 
-  const handleOnSubmit = (event) => {
+  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   }
 
   return (
-    <Form 
+    <Form
       onSubmit={handleOnSubmit}
-      className='contact-form'
+      className="contact-form"
     >
-      <Form.Group controlId='firstname'>
-        <Form.Label>First Name</Form.Label>
+      <Form.Group controlId="firstname">
+        <Form.Label>
+          First Name
+        </Form.Label>
         <Form.Control
-          className='firstName'
-          name='firstName'
+          className="firstName"
+          name="firstName"
           value={contact.firstName}
-          type='text'
+          type="text"
           onChange={handleOnChange}
         />
       </Form.Group>
-
-
-
-
-
-
-
-
-
+      <Form.Group controlId="lastName">
+        <Form.Label>
+          Last Name
+        </Form.Label>
+        <Form.Control
+          className="lastName"
+          name="lastName"
+          value={contact.lastName}
+          type="text"
+          onChange={handleOnChange}
+        />
+      </Form.Group>
+      <Form.Group controlId="phone">
+        <Form.Label>Phone</Form.Label>
+        <Form.Control
+          className="phone"
+          name="phone"
+          value={contact.phone}
+          type="text"
+          onChange={handleOnChange}
+        />
+      </Form.Group>
+      <Form.Group controlId="submit">
+        <Button
+          variant="primary"
+          type="submit"
+          className="submit-btn"
+        >
+          Add Contact Tropa
+        </Button>
+      </Form.Group>
     </Form>
+  );
+};
 
-
-
-
-
-
-
-
-
-
-
-  )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+export default ContactForm;
 

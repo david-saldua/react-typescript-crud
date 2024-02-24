@@ -1,26 +1,40 @@
-import React, { FC, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import React, {
+  FC,
+  useState,
+} from "react";
+import {
+  Button,
+  Form,
+} from "react-bootstrap";
 
 const ContactForm: FC = () => {
-  const [ contact, setContact ] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-  });
+  const [contact, setContact] =
+    useState({
+      firstName: "",
+      lastName: "",
+      phone: "",
+    });
 
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+  const handleOnChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } =
+      event.target;
     setContact((prevState) => {
       return {
         ...prevState,
-        [name]: value
+        [name]: value,
       };
     });
   };
 
-  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
-  }
+    console.log("contact", contact);
+    console.log("setContact", setContact);
+  };
 
   return (
     <Form
@@ -75,4 +89,3 @@ const ContactForm: FC = () => {
 };
 
 export default ContactForm;
-
